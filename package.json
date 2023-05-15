@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server/main.ts -w src/server",
     "start": "NODE_ENV=production ts-node src/server/main.ts",
+    "start-script": "NODE_ENV=production ts-node src/server/scripts/test.ts",
+    "test": "NODE_ENV=production ts-node src/server/scripts/test.ts",
     "build": "vite build",
     "lint": "eslint .  --ext .js",
     "lint-fix": "eslint --fix .  --ext .js"

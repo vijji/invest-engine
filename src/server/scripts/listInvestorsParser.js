@@ -12,7 +12,8 @@ const filePath = base.outputfilename
 
 listInvestors(url, tag)
   .then((investors) => {
-    writeJson(filePath, JSON.stringify(investors))
+      console.log('Data writtern to', filePath)
+      writeJson(filePath, JSON.stringify(investors))
   })
   .catch((error) => {
     console.error(error)

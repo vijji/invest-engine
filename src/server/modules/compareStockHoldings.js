@@ -2,7 +2,7 @@ import fs from 'fs'
 import { readJson } from './readJson.js'
 
 export async function compareStockHoldings () {
-  const folderPath = './src/data/share-holders/'
+  const folderPath = './src/data/ticker-finology-share-holders/'
   function readFilesAndBuildArray () {
     return new Promise((resolve, reject) => {
       fs.readdir(folderPath, {}, (err, files) => {

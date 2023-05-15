@@ -29,9 +29,9 @@ function sortByRank (recommendedList, filter = false) {
   return Object.fromEntries(recommendedArray)
 }
 
-const output = sortByRank(recommendedList)
-const path = './src/data/recommendation.json'
-// console.log(output)
-// const output = sortByRank(recommendedList, true);
-// let path = './src/data/recommendation-with-highest-rank.json';
+// const output = sortByRank(recommendedList)
+// const path = './src/data/recommendation.json'
+//console.log(output)
+const output = sortByRank(recommendedList, true);
+let path = './src/data/recommendation-with-highest-rank.json';
 writeJson(path, output)

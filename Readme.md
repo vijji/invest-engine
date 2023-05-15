@@ -35,6 +35,14 @@ My requirements are:
     <li></li>
 </ul>
 
+<h3>Notes on Node</h3>
+<ul>
+<li>node cli is an execution program for running javascript files</li>
+<li>ts-node cli is an execution program for running typescript files. it is a typescript execution engine that complies and runs typescript files.</li>
+
+</ul>
+
+
 <h3>Resources</h3>
 https://github.com/AkiMosi/moneycontrolPy
 
