@@ -1,6 +1,6 @@
 #!/usr/local/bin/node
-import { listInvestors } from '../modules/listInvestors.js'
-import { writeJson } from '../modules/writeJson.js'
+import { listInvestors } from '../modules/listInvestors.ts'
+import { writeJson } from '../modules/writeJson.ts'
 import { createRequire } from 'module'
 
 const require = createRequire(import.meta.url)
@@ -12,8 +12,8 @@ const filePath = base.outputfilename
 
 listInvestors(url, tag)
   .then((investors) => {
-      console.log('Data writtern to', filePath)
-      writeJson(filePath, JSON.stringify(investors))
+    console.log('Data writtern to', filePath)
+    writeJson(filePath, JSON.stringify(investors))
   })
   .catch((error) => {
     console.error(error)

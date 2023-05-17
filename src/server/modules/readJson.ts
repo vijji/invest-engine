@@ -1,6 +1,6 @@
 import { readFile } from 'fs'
 
-export function readJson (path) {
+export function readJson (path: string) {
   return new Promise((resolve, reject) => {
     readFile(path, 'utf-8', (err, data) => {
       if (err) {

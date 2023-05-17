@@ -1,14 +1,15 @@
 import { htmlParser } from './htmlParser.js'
 import { parse } from 'node-html-parser'
 
-export async function investorholdings (url) {
-  function parseHeaders (headerSelector) {
+// @ts-ignore
+export async function investorholdings (url: string): Promise<object> {
+  function parseHeaders (headerSelector: any) {
     const headerColumns = headerSelector.rawText.trim()
-    return headerColumns.split(/\r?\n/).filter(function (val) { return val.trim() })
+    return headerColumns.split(/\r?\n/).filter(function (val:string) { return val.trim() })
   }
-  function parseStockHoldings (root) {
-    const stockHolders = []
-    root.querySelector('tbody').querySelectorAll('td').forEach((val, index) => {
+  function parseStockHoldings (root: any) {
+    const stockHolders:any[] = []
+    root.querySelector('tbody').querySelectorAll('td').forEach((val: any, index: number) => {
       const arrayIndex = Math.floor(index / 8)
       if (!stockHolders[arrayIndex]) {
         stockHolders[arrayIndex] = []
@@ -17,9 +18,9 @@ export async function investorholdings (url) {
     })
     return stockHolders
   }
-  function getNetWorth (root) {
+  function getNetWorth (root: any) {
     let netWorth = ''
-    root.forEach((el, index, arrayEl) => {
+    root.forEach((el:any, index:number, arrayEl:any) => {
       netWorth = arrayEl[1].structuredText.trim()
     })
     return netWorth
@@ -28,12 +29,12 @@ export async function investorholdings (url) {
   try {
     const data = await htmlParser(url)
     const root = parse(data)
+    // @ts-ignore
     const investorNameSelector = root.querySelector('h1').rawText.trim()
     const netWorth = getNetWorth(root.querySelectorAll('strong')).replace(' Cr.', '')
 
     const headerColumns = parseHeaders(root.querySelector('thead'))
     const stockHoldings = parseStockHoldings(root)
-    stockHoldings.sort((a, b) => (a[1] < b[1]) ? -1 : 1)
 
     return {
       name: investorNameSelector,
@@ -44,6 +45,5 @@ export async function investorholdings (url) {
     }
   } catch (error) {
     console.error(error)
-    return null
   }
 }

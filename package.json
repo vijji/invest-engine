@@ -10,7 +10,9 @@
     "test": "NODE_ENV=production ts-node src/server/scripts/test.ts",
     "build": "vite build",
     "lint": "eslint .  --ext .js",
-    "lint-fix": "eslint --fix .  --ext .js"
+    "lint-fix": "eslint --fix .  --ext .js",
+    "lint-ts": "eslint .  --ext .ts",
+    "lint-ts-fix": "eslint --fix .  --ext .ts"
   },
   "dependencies": {
     "express": "^4.18.2",
