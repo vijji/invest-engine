@@ -7,6 +7,18 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.21.8.tgz#642af7d0333eab9c0ad70b14ac5e76dbde7bfdf8"
   integrity sha512-6zavDGdzG3gUqAdWvlLFfk+36RilI+Pwyuuh7HItyeScCWP3k6i8vKclAQ0bM/0y/Kz/xiwvxhMv9MgTJP5gmA==
 
+"@baggie/math@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@baggie/math/-/math-1.5.0.tgz#1d56d1a881b941f11bae89c2a210f9bd736c7111"
+  integrity sha512-Dda3Nvl8EJEKpEQIgkByp6xp6NlZbpyOTuBk4mcGleIa08xNPRFqXquc0miMANOYaRfH3gYSH+aKOuHyYcBmXA==
+  dependencies:
+    "@baggie/typescript" "^1.5.0"
+
+"@baggie/typescript@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@baggie/typescript/-/typescript-1.5.0.tgz#5ae2c71af168fbb9d530bdcd6f8ba125f88038b0"
+  integrity sha512-eChpT8f+nznW7GndpJaToNY181R90x64EAQlw8cGwgmd+2xr+uFPFhm7s83XXYePu4jgmC/0QmdBMsgY7rwdBA==
+
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz#00629c35a688e05a88b1cda684fb9d5e73f000a1"

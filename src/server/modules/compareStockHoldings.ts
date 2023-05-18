@@ -1,44 +1,22 @@
-import fs from 'fs'
-import { readJson } from './readJson.ts'
+import { DataStoreFromFiles } from './DataStoreFromFiles.ts'
+import { Convertions } from '../utilities/Convertions.ts'
 
-export async function compareStockHoldings (): Promise<Array<any>> {
-  const folderPath = './src/data/ticker-finology-share-holders/'
-  function readFilesAndBuildArray () {
-    return new Promise((resolve, reject) => {
-      fs.readdir(folderPath, {}, (err, files) => {
-        if (err) {
-          console.error('Failed to read directory')
-          reject(err)
-        }
-        resolve(files)
-      })
-    })
-  }
-
-  function isWhatPercentOf (x:any, y: any): number {
-    return (x / y) * 100
-  }
-
-  const filesArray: any = await readFilesAndBuildArray()
+export async function compareStockHoldings (): Promise<any[]> {
+  const store = new DataStoreFromFiles()
+  const dataSet = await store.buildDataSet()
 
   const stockHoldersList: any[] = []
-  for (const index in filesArray) {
-    const filename = filesArray[index]
-    const contents: any = await readJson(`${folderPath}/${filename}`)
-    if (contents !== null) {
-      // @ts-ignore
-      const holdings = contents.holdings.map(holder => {
-        const valueInvested = parseFloat(holder[7].trim()).toFixed(2)
-        // @ts-ignore
-        return { name: holder[1], totalInvestment: valueInvested, percentage: parseFloat(isWhatPercentOf(valueInvested, contents.networth)).toFixed(2) }
-      })
-
-      // @ts-ignore
-      stockHoldersList[index] = {
-        name: contents.name,
-        networth: contents.networth,
-        holdings
-      }
+  for (const index in dataSet) {
+    const contents = dataSet[index]
+    // @ts-ignore holder variable is not very conclusive
+    const holdings = contents.holdings.map(holder => {
+      const valueInvested = parseFloat(holder[7].trim()).toFixed(2)
+      return { name: holder[1], totalInvestment: valueInvested, percentage: (new Convertions(contents.networth).getPercentage(new Convertions(valueInvested))) }
+    })
+    stockHoldersList[index] = {
+      name: contents.name,
+      networth: contents.networth,
+      holdings
     }
   }
 

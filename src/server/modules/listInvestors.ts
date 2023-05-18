@@ -6,7 +6,7 @@ export async function listInvestors (url: string, tag: string): Promise<string[]
     const data = await htmlParser(url)
     const root = parse(data)
     const htmlElements = root.getElementsByTagName(tag)
-    const investors:string[] = []
+    const investors: string[] = []
     htmlElements.forEach(function (element) {
       investors.push(element.rawText)
     })

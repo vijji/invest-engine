@@ -58,6 +58,8 @@ https://www.npmjs.com/package/node-html-parser
 
 https://blog.logrocket.com/reading-writing-json-files-nodejs-complete-tutorial/
 
+https://bag-of-tricks.github.io/modules/math.html
+
 
 
 
