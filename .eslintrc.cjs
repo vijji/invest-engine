@@ -4,8 +4,9 @@ module.exports = {
     es2021: true,
     node: true
   },
+  plugins: ['@typescript-eslint'],
   extends: [
-      'standard-with-typescript',
+      //'standard-with-typescript',
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
   ],
@@ -18,6 +19,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    "@typescript-eslint/dot-notation": 'error'
-  }
+    '@typescript-eslint/no-explicit-any' : 'off',
+    '@typescript-eslint/ban-ts-comment' : 'off',
+  },
 }

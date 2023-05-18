@@ -5,11 +5,10 @@ import { writeJson } from '../modules/writeJson.ts'
 const recommendedList: any = {}
 const giantList = await compareStockHoldings()
 
-giantList.forEach((value: any, index: number, array: any[]) => {
+giantList.forEach((value: any) => {
   value.holdings.forEach((holder: any) => {
     const companyName = holder.name
-    if (!holder.totalInvestment.includes("0.00") && !holder.totalInvestment.includes("NaN"))
-    {
+    if (!holder.totalInvestment.includes('0.00') && !holder.totalInvestment.includes('NaN')) {
       if (recommendedList[companyName]) {
         recommendedList[companyName].rank += 1
         recommendedList[companyName].holders[value.name] = { networth: value.networth, totalInvestment: holder.totalInvestment, percentage: holder.percentage }
@@ -35,7 +34,7 @@ function sortByRank (recommendedList: any, filter = false) {
 
 // const output = sortByRank(recommendedList)
 // const path = './src/data/recommendation.json'
-//console.log(output)
-const output = sortByRank(recommendedList, true);
-let path = './src/data/recommendation-with-highest-rank.json';
+// console.log(output)
+const output = sortByRank(recommendedList, true)
+const path = './src/data/recommendation-with-highest-rank.json'
 writeJson(path, output)
