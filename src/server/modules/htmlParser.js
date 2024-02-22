@@ -12,6 +12,7 @@ export function htmlParser (url) {
         resolve(data)
       })
     }).on('error', (error) => {
+      console.log('error, rejected', url)
       reject(error)
     })
   })
